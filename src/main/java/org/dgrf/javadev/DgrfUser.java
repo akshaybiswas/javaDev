@@ -17,10 +17,10 @@ import org.dgrf.javadev.entities.UserData;
 public class DgrfUser {
 
     public static void main(String[] args) {
-        UserDataDAO ud = new UserDataDAO();
+        //UserDataDAO ud = new UserDataDAO();
         //List<UserData> uList = ud.findUserDataEntities();
         //List<UserData> al = new ArrayList<>();
-        Date tD = new Date();
+        //Date tD = new Date();
 
 //        for (int i = 0; i < uList.size(); i++) {
 //            UserData userData = uList.get(i);

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.dgrf.javadev.DAO.UserDataDAO;
+import org.dgrf.javadev.dto.ResponseCode;
 import org.dgrf.javadev.entities.UserData;
 
 public class UserAuth {
@@ -31,7 +32,7 @@ public class UserAuth {
                     } catch (Exception ex) {
                         Logger.getLogger(UserAuth.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    returnCode = 1;
+                    returnCode = ResponseCode.SUCCESS;
                     return returnCode;
 
                 } else {
@@ -40,7 +41,7 @@ public class UserAuth {
 
                     if (userAttm > 2) {
                         userData.setUserStatus(false);
-                        returnCode = 4;
+                        returnCode = ResponseCode.LOGIN_ATTEMPTS_EXCEEDED;
                         return returnCode;
                     }
                     userData.setUserInvalidAttms(userAttm);
@@ -49,16 +50,16 @@ public class UserAuth {
                     } catch (Exception ex) {
                         Logger.getLogger(UserAuth.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    returnCode = 2;
+                    returnCode = ResponseCode.WRONG_CREDENTIALS;
                     return returnCode;
                 }
             } else {
-                returnCode = 3;
+                returnCode = ResponseCode.INACTIVE_USER;
                 return returnCode;
             }
 
         } else {
-            returnCode = 0;
+            returnCode = ResponseCode.INVALID_USER;
             return returnCode;
         }
 
